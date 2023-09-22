@@ -15,7 +15,12 @@ import { toast } from "react-toastify";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const FAUCET_ABI = [{"inputs": [], "name": "claim", "outputs": [], "stateMutability": "nonpayable", "type": "function"}];
+const FAUCET_ABI = [{"inputs": [
+    {
+      "internalType": "address",
+      "name": "addr",
+      "type": "address"
+    }], "name": "claim", "outputs": [], "stateMutability": "nonpayable", "type": "function"}];
 
 export default function Layout({ children }) {
     const dispatch = useDispatch()
@@ -33,16 +38,16 @@ export default function Layout({ children }) {
 
         try {
             const web3 = new Web3(Web3.givenProvider);
-            const faucetContract = new web3.eth.Contract(FAUCET_ABI, "0xFB1655dE68600aA3392Fa83ee6390C74a8A58A98");
+            const faucetContract = new web3.eth.Contract(FAUCET_ABI, process.env.NEXT_PUBLIC_FAUCET_ADDRESS);
 
-            const { success, gas, message } = await Web3Call.estimateGas(faucetContract, "claim", 0, [], address);
+            const { success, gas, message } = await Web3Call.estimateGas(faucetContract, "claim", 0, [_address], address);
 
             if (!success) {
                 toast.error("Transaction Failed", message);
                 dispatch(hideOverlay());
                 return;
             }
-            const res = await Web3Call.runSmartContract(faucetContract, "claim", 0, [], address)
+            const res = await Web3Call.runSmartContract(faucetContract, "claim", 0, [_address], address)
 
             toast.success("100 USDC received!");
             dispatch(hideOverlay());
@@ -69,12 +74,6 @@ export default function Layout({ children }) {
                     </button>
                 </div>
             </div>
-
-            { isSpinner &&
-                <div className='z-100 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
-                <ClipLoader speedMultiplier={0.5} color='blue' size={50}/>
-                </div>
-            }
 
             { isOverlay &&
                 <div className='z-100 fixed w-screen h-screen top-0 left-0 bg-[#00000070] flex flex-col justify-center items-center'>

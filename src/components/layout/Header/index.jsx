@@ -65,8 +65,6 @@ export default function Header() {
                         <button className='rounded-[10px] text-[14px] text-white font-semibold bg-black flex justify-center items-center min-w-[158px] h-[44px] px-[14px]'
                             onClick={() => { open(); }}
                         >
-                            {/* <Image alt="wallet" width={16} height={16} src="/images/header/wallet.png" /> */}
-                            {/* <p className=''> {address.substring(0, 6)}...${address.substring(40)}</p> */}
                             { balance >= 0 ?
                                 <p className=''> Balance: <span className='text-[#6EB119]'>{balance}</span> USD </p> :
                                 <p> loading </p>
@@ -77,7 +75,7 @@ export default function Header() {
                         <button className='rounded-[10px] text-[14px] text-black font-semibold bg-[#BFFF0B] flex justify-center items-center w-[158px] h-[44px]'
                             onClick={() => { open(); }}
                         >
-                            <Image alt="wallet" width={16} height={16} src="/images/header/wallet.png" />
+                            <Image alt="wallet" width={16} height={16} src="/images/wallet.png" />
                             <p className='ml-[10px]'> Connect Wallet </p>
                         </button>
                         </>
