@@ -1,0 +1,35 @@
+html,
+body {
+  padding: 0;
+  margin: 0;  
+  font-family: 'Inter', sans-serif;
+  background-color: #202124;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.header-shadow {
+  background: rgba(24, 26, 31, 0.90);
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(10px);
+}
+.bg-gradient-to-br {
+  background-image: linear-gradient(145deg, #1E1F23 0%, #0F0F11 98.67%);
+}
+.round-result-bg {
+  background-image: linear-gradient(180deg, rgba(40, 42, 45, 0.50) -5.19%, rgba(51, 53, 56, 0.50) 80.2%);
+  backdrop-filter: blur(5px);
+}
+.spinner-bg {
+  border-radius: 6px;
+  background: linear-gradient(90deg, #BFFF0B -1.67%, #CCDC31 18.67%, #D4B941 39%, #D8944B 59.33%, #D86C51 79.67%, #D63855 100%);
+}
+* {
+  box-sizing: border-box;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
