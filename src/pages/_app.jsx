@@ -12,7 +12,7 @@ import { configureChains, createConfig, WagmiConfig } from 'wagmi'
 import { sepolia } from 'wagmi/chains'
 
 const chains = [sepolia]
-const projectId = process.env.NEXT_PUBLIC_PROJECT_ID;
+const projectId = "1cf4181d0ded22aeb1c6902dc62716dd";
 
 const { publicClient } = configureChains(chains, [w3mProvider({ projectId })]);
 const wagmiConfig = createConfig({
