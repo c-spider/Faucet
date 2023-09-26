@@ -24,7 +24,7 @@ export default function Header() {
         }, [1000])
 
         return () => clearInterval(interval);
-    }, []);
+    }, [address]);
 
     const getBalance = async () => {
         if(!isConnected || !address)
